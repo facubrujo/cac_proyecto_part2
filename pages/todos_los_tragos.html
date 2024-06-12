@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Arg - Todas nuestras bebidas</title>
+    <meta name="description" content="Descubre una gran variedad de cócteles, tragos y bebidas. Consulta recetas de preparación, crea una cuenta y guarda tus bebidas favoritas.">
+    <meta name="keywords" content="cócteles, tragos, bebidas, recetas de cócteles, recetas de tragos, bebidas alcohólicas, bebidas sin alcohol, guardar bebidas favoritas, API de bebidas">
+    <meta name="author" content="Ruben Ledesma - Fernandez Facundo - Maximiliano Centurion">
+
+    <link rel="shortcut icon" href="../img/coctel-favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/modo_oscuro.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles_tlt.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark"
+            aria-label="Offcanvas navbar large">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="../img/4-removebg-preview-fotor-2024052492431.png" alt="Logo" height="50" class="d-inline-block">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar2"
+                    aria-labelledby="offcanvasNavbar2Label">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbar2Label" hidden>Nav</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a id="todos" class="nav-link active" href="todos_los_tragos.html">Todos los
+                                    tragos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="./quienes_somos.html">Quienes somos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" href="registro.html">Registro</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex mt-3 mt-lg-0" role="search">
+                            <a id="boton-login" href="login.html" class="btn btn-outline-warning"
+                                >Login</a>
+                        </div>
+
+                        <div class="dropdown" style="display : none;" id="contenedor-img-login">
+                            <a href="#" class="d-block link-body-emphasis 
+                            text-decoration-none dropdown-toggle nav-link active " data-bs-toggle="dropdown"
+                                aria-expanded="true">
+                                <img src="../img/usuario_icono.png" alt="mdo" class="rounded-circle img-perfil"
+                                    id="img-perfil">
+                            </a>
+                            <ul class="dropdown-menu text-small " data-popper-placement="bottom-end">
+                                <li><a class="dropdown-item" href="perfil_usuario.html">Mi perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Favoritos</a></li>
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a id="cerrar-sesion" class="dropdown-item" href="#">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                        <!-- Modo oscuro -->
+                        <div class="modo-oscuro">
+
+                            <label class="modo-oscuro-btn" for="toggle">
+                                <i class="bi bi-sun-fill text-warning"></i>
+                                <input type="checkbox" id="toggle">
+                                <span class="slider"></span>
+                                <i class="bi bi-moon-stars-fill text-warning"></i>
+                            </label>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2 hidden>Buscador</h2>
+            <ul class="alfabetico" id="buscador-alfabetico"></ul>
+            <form id="formulario-busqueda" class="form-busqueda-tlt" action="pages/todos_los_tragos.html" method="GET">
+                <div>
+                    <input type="text" id="input-busqueda" name="s" class="form-control"
+                        placeholder="Buscar tragos por ej: margarita , belmont , daiquiri">
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-outline-secondary btn-md">Buscar</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Contenido luego de la carga, consulta API -->
+        <div class="btn-tlt-contenedor">
+            <a href="#" id="cAlcohol" class="btn-tlt">
+                <div class="btn-tlt-img">
+                    <img src="../img/con_alcohol.jpg" alt="">
+                    <h3>Con alcohol</h3>
+                </div>
+            </a>
+            <a href="#" id="sAlcohol" class="btn-tlt">
+                <div class="btn-tlt-img">
+                    <img src="../img/sin_alcohol.jpg" alt="">
+                    <h3>Sin alcohol</h3>
+                </div>
+            </a>
+        </div>
+        <section id="contenido" class="contenedor-imagenes hidden">
+            
+
+                <!-- pantalla de carga -->
+                <div class="carga" id="ventana-carga">
+                    <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+
+            <h2 class="titulo" id="tit-busqueda">Todas nuestras bebidas</h2>
+            <article class="alcohol " id="contenedor-tragos">
+                <h2 hidden>Todas nuestras bebidas</h2>
+
+
+
+            </article>
+        </section>
+
+        <!-- Ventana Modal permanece oculta hasta que se clickea una imagen -->
+        <section id="miModal" class="modal">
+            <h3 hidden>Modal</h3>
+            <div class="modal-contenido">
+                <div id="contenidoModal" class="trago-modal"></div>
+                <div class="cerrar-modal">
+                    <button class="favoritos-btn" id="mi-lista"><i class="bi bi-heart"></i></button>
+                    <button class="favoritos-btn" id="mi-lista-ok"><i class="bi bi-heart-fill"></i></button>
+                    <button class="cerrar" id="cerrarModal">Cerrar</button>
+                </div>
+            </div>
+        </section>
+        <button id="scrollBtn" title="Subir arriba"><i class="fa fa-chevron-up"></i></button>
+    </main>
+
+    <footer>
+        <div class="footerBottom bg-dark bg-gradient">
+            <p>Copyright &copy;2024; Proyecto Full-Stack Python Codo a Codo </p>
+        </div>
+    </footer>
+    
+    <!-- Scripts de JavaScript -->
+    <script src="../js/ventana_carga.js"></script>
+    <script src="../js/modo_oscuro.js"></script>
+
+    <script src="../js/busqueda_alfabetica.js"></script>
+
+    <!-- <script src="../js/todos_los_tragos.js"></script> -->
+    <script src="../js/todoslostragos2.js"></script>
+
+    <script src="../js/ventana_modal.js"></script>
+
+    <script src="../js/metodos_varios.js"></script>
+
+    <script src="../js/busqueda_tragos.js"></script>
+
+    <script src="../js/resultado_busqueda.js"></script>
+
+
+    <script src="../js/verificacion.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+    <script src="../js/boton_up.js"></script>
+
+
+
+</body>
+
+</html>
